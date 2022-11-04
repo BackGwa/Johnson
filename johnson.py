@@ -30,7 +30,7 @@ def meal_zone(JSON, usetime, meal_value):                                   # �
     data = json.loads(JSON.text)
     return data['menu'][0][f'{mealzone}']   
 
-def now(school_type, school_code):                                     # 학교타입 >> [초등] elementary | [중등] : middle | [고등] : high // 학교코드 >> [검색] https://schoolmenukr.ml/code/app
+def now(school_type, school_code):
     API = meal_info(school_type, school_code, 0, 0, 0)                      # 오늘 급식 정보 가져오기
     response = requests.get(API)                                            # 값 가져오기
 
