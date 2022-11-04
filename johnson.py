@@ -47,7 +47,7 @@ def meal_zone(JSON, usetime, meal_value):
                 mealzone = 'breakfast'
             elif(hour > 8):
                 mealzone = 'lunch'
-                
+         
         elif(islc and isdr):
             if(hour > 0 and hour < 14):
                 mealzone = 'lunch'
