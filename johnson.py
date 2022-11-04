@@ -64,13 +64,13 @@ def meal_zone(JSON, usetime, meal_value):                                       
             mealzone = 'None'
             
     if(usetime):
-        if(mealzone != 'None'):
-            result = data['menu'][0][f'{mealzone}']
+        if(mealzone != 'None'):        
+            result = [mealzone] + data['menu'][0][f'{mealzone}']
         else:
             result = ['급식 정보가 존재하지 않습니다.']
         
-    elif((data['menu'][0][meal_value]) != []):
-        result = data['menu'][0][f'{meal_value}']
+    elif((data['menu'][0][mealzone]) != []):
+        result = [mealzone] + data['menu'][0][f'{mealzone}']
         
     else:
         result = ['급식 정보가 존재하지 않습니다.']
