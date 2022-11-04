@@ -4,7 +4,9 @@ import json
 
 today = datetime.today()
 
-def meal_info(school_type, school_code, add_year, add_month, add_date, aleg):                   # 날짜로 급식 정보 가져오기
+
+# [함수] : API로 급식 정보 JSON 반환하기
+def meal_info(school_type, school_code, add_year, add_month, add_date, aleg):
     year = today.year + add_year
     month = today.month + add_month
     day = today.day + add_date
@@ -18,7 +20,9 @@ def meal_info(school_type, school_code, add_year, add_month, add_date, aleg):   
     
     return result
 
-def meal_zone(JSON, usetime, meal_value):                                                       # 급식 정보 반환
+
+# [함수] : 필요한 정보만 반환하기
+def meal_zone(JSON, usetime, meal_value):
     mealzone = meal_value
     data = json.loads(JSON.text)
     result = ''
@@ -26,17 +30,10 @@ def meal_zone(JSON, usetime, meal_value):                                       
     if(usetime):
         hour = today.hour
         
-        isbf = True
-        islc = True
-        isdr = True
-        
-        if((data['menu'][0]['breakfast']) == []):
-            isbf = False
-        if((data['menu'][0]['lunch']) == []):
-            islc = False
-        if((data['menu'][0]['dinner']) == []):
-            isdr = False
-        
+        isbf = False if ((data['menu'][0]['breakfast']) == []) else True
+        islc = False if ((data['menu'][0]['lunch']) == []) else True
+        isdr = False if ((data['menu'][0]['dinner']) == []) else True
+      
         if(isbf and islc and isdr):
             if(hour > 0 and hour < 8):
                 mealzone = 'breakfast'
@@ -77,6 +74,8 @@ def meal_zone(JSON, usetime, meal_value):                                       
             
     return result
 
+
+# [함수] : 급식 정보 가져오기
 def now(school_type, school_code, add_value, aleg, usetime, zonevalue = 'NoneValue'):
     
     API = meal_info(school_type, school_code, add_value[0], add_value[1], add_value[2], aleg)
