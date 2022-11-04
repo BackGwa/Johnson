@@ -1,5 +1,4 @@
 import johnson as meal
-
 # 학교타입 >> [초등] elementary | [중등] : middle | [고등] : high
 # 학교코드 >> [검색] https://schoolmenukr.ml/code/app
 # 알레르기 정보 >> [표시] : True | [숨기기] : False
