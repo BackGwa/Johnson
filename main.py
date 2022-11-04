@@ -2,7 +2,7 @@ import johnson as meal
 
 # 학교타입 >> [초등] elementary | [중등] : middle | [고등] : high
 # 학교코드 >> [검색] https://schoolmenukr.ml/code/app
-# 알레르기 정보 >> [숨기기] : hidden | [표시] : formed
+# 알레르기 정보 >> [표시] : True | [숨기기] : False
 # 급식 시간대 >> [조식] : breakfast | [중식] : lunch | [석식] : dinner
 
 date = [0, 0, 0]                                                                # 날짜추가 : 현재 날짜에서 추가 할 [년, 월, 일]
