@@ -9,8 +9,6 @@
 
 > <a href = 'https://github.com/5d-jh/school-menu-api'>**[학교식단 API]**</a>
 
-<br>
-
 ---
 
 ### <b>licence</b>
