@@ -1,6 +1,10 @@
-## <b>Johnson<b>
 
-<b>울 학교 급식 JSON<s>(존슨)</s> 분석하구 이쁘게 보여주기</b>
+<p align=center><img src="res/JSON.png" width="600"></p>
+
+## <big><p align=center><b>Johnson<b></p></big>
+
+<p align=center><b>울 학교 급식 JSON<s>(존슨)</s> 분석하구 이쁘게 보여주기</b></p>
+
 
 <br>
 
