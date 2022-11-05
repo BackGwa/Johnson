@@ -41,23 +41,18 @@ def meal_zone(JSON, usetime, meal_value):
                 mealzone = 'dinner'
                 
         elif(isbf and islc):
-            mealzone = 'breakfast' if (hour > 0 and hour < 8) else 'lunch'
-         
+            mealzone = 'breakfast' if (hour > 0 and hour < 8) else 'lunch'  
         elif(islc and isdr):     
             mealzone = 'lunch' if (hour > 0 and hour < 14) else 'dinner'
-          
         elif(islc):
             mealzone = 'lunch'
-            
         else:
             mealzone = 'None'
             
     if(usetime):
         result = ([mealzone] + data['menu'][0][f'{mealzone}']) if (mealzone != 'None') else ['급식 정보가 존재하지 않습니다.']
-        
     elif((data['menu'][0][mealzone]) != []):
         result = [mealzone] + data['menu'][0][f'{mealzone}']
-        
     else:
         result = ['급식 정보가 존재하지 않습니다.']
             
@@ -66,12 +61,7 @@ def meal_zone(JSON, usetime, meal_value):
 
 # [함수] : 알레르기 정보 변환
 def aleg_info(mealinfo):
-    
-    if('{' in str(mealinfo)):
-        result = (str(mealinfo['name']) + str(mealinfo['allergy']))
-        return result
-    else:
-        return mealinfo
+    return ((str(mealinfo['name']) + str(mealinfo['allergy'])) if ('{' in str(mealinfo)) else mealinfo)
 
 
 # [함수] : 급식 정보 가져오기
