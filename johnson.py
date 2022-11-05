@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+#-*- coding:utf-8 -*-
+
 from datetime import datetime
 import requests
 import json
@@ -7,6 +10,7 @@ today = datetime.today()
 
 # [함수] : API로 급식 정보 JSON 반환하기
 def meal_info(school_type, school_code, add_year, add_month, add_date, aleg):
+    
     year = today.year + add_year
     month = today.month + add_month
     day = today.day + add_date
@@ -75,10 +79,28 @@ def meal_zone(JSON, usetime, meal_value):
     return result
 
 
+# [함수] : 알레르기 정보 변환
+def aleg_info(mealinfo):
+    
+    if('{' in str(mealinfo)):
+        result = (str(mealinfo['name']) + str(mealinfo['allergy']))
+        return result
+    else:
+        return mealinfo
+
+
 # [함수] : 급식 정보 가져오기
 def now(school_type, school_code, add_value, aleg, usetime, zonevalue = 'NoneValue'):
     
     API = meal_info(school_type, school_code, add_value[0], add_value[1], add_value[2], aleg)
     response = requests.get(API)                                                                
 
-    return meal_zone(response, usetime, zonevalue)
+    result = meal_zone(response, usetime, zonevalue)
+    aleg_result = []
+
+    if(aleg):
+        for rtaleg in result:
+            aleg_result += [aleg_info(rtaleg)]
+        return aleg_result
+    else:
+        return result
