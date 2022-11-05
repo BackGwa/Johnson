@@ -57,7 +57,7 @@ def meal_zone(JSON, usetime, meal_value):
                 mealzone = 'lunch'
             elif(hour > 14):
                 mealzone = 'dinner'
-                
+          
         elif(islc):
             mealzone = 'lunch'
             
@@ -65,10 +65,7 @@ def meal_zone(JSON, usetime, meal_value):
             mealzone = 'None'
             
     if(usetime):
-        if(mealzone != 'None'):        
-            result = [mealzone] + data['menu'][0][f'{mealzone}']
-        else:
-            result = ['급식 정보가 존재하지 않습니다.']
+        result = ([mealzone] + data['menu'][0][f'{mealzone}']) if (mealzone != 'None') else ['급식 정보가 존재하지 않습니다.']
         
     elif((data['menu'][0][mealzone]) != []):
         result = [mealzone] + data['menu'][0][f'{mealzone}']
