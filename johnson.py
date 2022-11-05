@@ -14,26 +14,20 @@ def meal_info(school_type, school_code, add_year, add_month, add_date, aleg):
     year = today.year + add_year
     month = today.month + add_month
     day = today.day + add_date
-    
-    if(aleg == True):
-        allergy = 'formed'
-    elif(aleg == False):
-        allergy = 'hidden'                                                         
+    allergy = 'formed' if (aleg == True) else 'hidden'                                                       
 
-    result = f'https://schoolmenukr.ml/api/{school_type}/{school_code}?year={year}&month={month}&date={day}&allergy={allergy}'
-    
-    return result
+    return f'https://schoolmenukr.ml/api/{school_type}/{school_code}?year={year}&month={month}&date={day}&allergy={allergy}'
 
 
 # [함수] : 필요한 정보만 반환하기
 def meal_zone(JSON, usetime, meal_value):
+    
     mealzone = meal_value
     data = json.loads(JSON.text)
     result = ''
     
     if(usetime):
         hour = today.hour
-        
         isbf = False if ((data['menu'][0]['breakfast']) == []) else True
         islc = False if ((data['menu'][0]['lunch']) == []) else True
         isdr = False if ((data['menu'][0]['dinner']) == []) else True
@@ -43,20 +37,14 @@ def meal_zone(JSON, usetime, meal_value):
                 mealzone = 'breakfast'
             elif(hour > 8 and hour < 14):
                 mealzone = 'lunch'
-            elif(hour > 14):
+            else:
                 mealzone = 'dinner'
                 
         elif(isbf and islc):
-            if(hour > 0 and hour < 8):
-                mealzone = 'breakfast'
-            elif(hour > 8):
-                mealzone = 'lunch'
+            mealzone = 'breakfast' if (hour > 0 and hour < 8) else 'lunch'
          
-        elif(islc and isdr):
-            if(hour > 0 and hour < 14):
-                mealzone = 'lunch'
-            elif(hour > 14):
-                mealzone = 'dinner'
+        elif(islc and isdr):     
+            mealzone = 'lunch' if (hour > 0 and hour < 14) else 'dinner'
           
         elif(islc):
             mealzone = 'lunch'
