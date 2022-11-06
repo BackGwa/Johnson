@@ -50,19 +50,19 @@ def aleg_info(mealinfo):
 
 
 # [함수] : 급식 정보 가져오기
-def now(school_type, school_code, get_value = [today.year, today.month, today.day], aleg = False, usetime = True, zonevalue = 'NoneValue'):
+def get(school_type, school_code, date = [today.year, today.month, today.day], aleg = False, usetime = True, zonevalue = 'NoneValue'):
     
     allergy = 'formed' if (aleg == True) else 'hidden'
     
-    API = f'https://schoolmenukr.ml/api/{school_type}/{school_code}?year={get_value[0]}&month={get_value[1]}&date={get_value[2]}&allergy={allergy}'
+    API = f'https://schoolmenukr.ml/api/{school_type}/{school_code}?year={date[0]}&month={date[1]}&date={date[2]}&allergy={allergy}'
     response = requests.get(API)                                                                
 
     result = meal_zone(response, usetime, zonevalue)
     aleg_result = []
 
     if(aleg):
-        for rtaleg in result:
-            aleg_result += [aleg_info(rtaleg)]
+        for aleg_value in result:
+            aleg_result += [aleg_info(aleg_value)]
         return aleg_result
     else:
         return result

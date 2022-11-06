@@ -10,7 +10,7 @@ import johnson as meal
 # 자동_가져오기 >> [활성화] : True | [비활성화] : False
 # 급식 시간대 >> [조식] : breakfast | [중식] : lunch | [석식] : dinner
 
-result = meal.now('high', 'N100000164')                 # meal.now(학교타입, 학교코드, 날짜, 알레르기_정보_표시, 자동_가져오기, 급식_시간대)
+result = meal.get('high', 'N100000164')                 # meal.get(학교타입, 학교코드, 날짜, 알레르기_정보_표시, 자동_가져오기, 급식_시간대)
 
 for value in result:
     print(value)
