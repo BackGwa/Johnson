@@ -5,11 +5,12 @@ import johnson as meal
 
 # 학교타입 >> [초등] elementary | [중등] : middle | [고등] : high
 # 학교코드 >> [검색] https://schoolmenukr.ml/code/app
+# 날짜 >> [년, 월, 일]의 급식 정보
 # 알레르기 정보 >> [표시] : True | [숨기기] : False
+# 자동_가져오기 >> [활성화] : True | [비활성화] : False
 # 급식 시간대 >> [조식] : breakfast | [중식] : lunch | [석식] : dinner
 
-date = [0, 0, 0]                                                    # 날짜추가 : 현재 날짜에서 추가하고 싶은 [년, 월, 일]
-result = meal.now('high', 'N100000164', date, False, True)          # meal.now(학교타입, 학교코드, 날짜추가, 알레르기 정보 표시, 자동 가져오기, 급식 시간대)
+result = meal.now('high', 'N100000164')                 # meal.now(학교타입, 학교코드, 날짜, 알레르기_정보_표시, 자동_가져오기, 급식_시간대)
 
 for value in result:
     print(value)
