@@ -8,12 +8,6 @@ import json
 today = datetime.today()
 
 
-# [함수] : API로 급식 정보 JSON 반환하기
-def meal_info(school_type, school_code, year, month, day, aleg):
-    allergy = 'formed' if (aleg == True) else 'hidden'                                                       
-    return f'https://schoolmenukr.ml/api/{school_type}/{school_code}?year={year}&month={month}&date={day}&allergy={allergy}'
-
-
 # [함수] : 필요한 정보만 반환하기
 def meal_zone(JSON, usetime, meal_value):
     
@@ -58,7 +52,9 @@ def aleg_info(mealinfo):
 # [함수] : 급식 정보 가져오기
 def now(school_type, school_code, get_value = [today.year, today.month, today.day], aleg = False, usetime = True, zonevalue = 'NoneValue'):
     
-    API = meal_info(school_type, school_code, get_value[0], get_value[1], get_value[2], aleg)
+    allergy = 'formed' if (aleg == True) else 'hidden'
+    
+    API = f'https://schoolmenukr.ml/api/{school_type}/{school_code}?year={get_value[0]}&month={get_value[1]}&date={get_value[2]}&allergy={allergy}'
     response = requests.get(API)                                                                
 
     result = meal_zone(response, usetime, zonevalue)
