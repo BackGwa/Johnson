@@ -22,17 +22,17 @@ def meal_zone(JSON, usetime, meal_value):
         isdr = False if ((data['menu'][0]['dinner']) == []) else True
       
         if(isbf and islc and isdr):
-            if(hour > 0 and hour < 8):
+            if(hour >= 0 and hour < 8):
                 mealzone = 'breakfast'
-            elif(hour > 8 and hour < 14):
+            elif(hour >= 8 and hour < 14):
                 mealzone = 'lunch'
             else:
                 mealzone = 'dinner'
                 
         elif(isbf and islc):
-            mealzone = 'breakfast' if (hour > 0 and hour < 8) else 'lunch'  
+            mealzone = 'breakfast' if (hour >= 0 and hour < 8) else 'lunch'  
         elif(islc and isdr):     
-            mealzone = 'lunch' if (hour > 0 and hour < 14) else 'dinner'
+            mealzone = 'lunch' if (hour >= 0 and hour < 14) else 'dinner'
         else:
             mealzone = 'lunch' if((islc) and ((not isbf) and (not isdr))) else 'None'
             
